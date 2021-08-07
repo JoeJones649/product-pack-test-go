@@ -9,6 +9,6 @@ COPY *.go ./
 
 RUN go build
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["/app/product-pack-test-go"]
