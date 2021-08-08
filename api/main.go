@@ -9,9 +9,8 @@ import (
 
 
 func main() {
-	// creates a new instance of a mux router
+	// Creates a new instance of a mux router
     router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/products/{id}/packs", handlers.GetProductPacksHandler).Methods("GET").Queries("quantity", "{[0-9]*?}")
-	log.Println("Runnings")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
