@@ -1,4 +1,5 @@
 api/product-pack-test-go
+api/vendor
 *.js
 !jest.config.js
 *.d.ts
