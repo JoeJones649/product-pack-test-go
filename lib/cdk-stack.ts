@@ -16,7 +16,7 @@ export class CdkStack extends cdk.Stack {
         const fargateService = new ecs_patterns.ApplicationLoadBalancedFargateService(this, "FargateService", {
             cluster,
             taskImageOptions: {
-                image: ecs.ContainerImage.fromAsset(`${__dirname}/../../api/`),
+                image: ecs.ContainerImage.fromAsset(`${__dirname}/../api/`),
                 containerPort: 8080,
                 environment: {
                     DEPLOYED_DATE: Date.now().toLocaleString()

@@ -1,0 +1,50 @@
+openapi: 3.0.0
+info:
+  title: GS Product pack tech test API
+  description: Product API to allow the calculation of packs for a given quantity
+  version: 0.1.9
+servers:
+  - url: http://localhost:8080
+    description: Local server hostname
+  - url: GSTec-Farga-1BLYX3MS2MBWI-878009822.eu-west-1.elb.amazonaws.com
+    description: Hosted hostname.
+paths:
+  /products/{id}/packs:
+    get:
+      summary: Get a products pack configuration
+      description: Returns the pack configuration details for a product for a given quantity.
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the product to get the pack configuration for.
+          schema: 
+            type: string
+            format: uuid
+          required: true
+        - name: quantity
+          in: query
+          description: The quantity of the product required
+          schema: 
+            type: integer
+          required: true
+      responses:
+        '200':
+          description: PackConfiguration
+          content:
+            application/json:
+              schema: 
+                type: object
+                properties:
+                  NumberOfPacks:
+                    type: integer
+                  ExtraProducts:
+                    type: integer
+                  PackConfiguration:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        Size:
+                          type: integer
+                        Quantity:
+                          type: integer
