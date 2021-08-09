@@ -22,7 +22,8 @@ export class CdkStack extends cdk.Stack {
                     DEPLOYED_DATE: Date.now().toLocaleString()
                 }
             },
-            desiredCount: 1
+            desiredCount: 1,
+            minHealthyPercent: 100 // Percentage of the desired count that need to be available.
         });
 
         new cdk.CfnOutput(this, 'LoadBalancerDNS', { value: fargateService.loadBalancer.loadBalancerDnsName });
